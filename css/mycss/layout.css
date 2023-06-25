@@ -1,0 +1,151 @@
+* {
+    box-sizing: border-box;
+    margin: auto;
+}
+
+.border-screen {
+    overflow: auto;
+    position: relative;
+    width: 1500px;
+    height: 850px;
+}
+
+.header {
+    overflow: auto;
+    position: relative;
+    width: 100%;
+    height: 130px;
+    background-color: dimgray;
+}
+
+.main-top {
+    overflow: auto;
+    position: relative;
+    width: 1500px;
+    height: 300px;
+    border: 10px black;
+    background-image: url("../img/gif/background_forest.gif");
+}
+
+#left-space, #right-space {
+    overflow: auto;
+    position: relative;
+    width: 10%;
+    height: 100%;
+    background-color: black;
+}
+
+#mid {
+    overflow: auto;
+    position: relative;
+    width: 80%;
+    height: 100%;
+}
+
+
+.layout {
+    overflow: auto;
+    float: left;
+}
+
+#top-status {
+    overflow: auto;
+    position: relative;
+    width: 100%;
+    height: 15%;
+}
+
+#mid-avatar {
+    overflow: auto;
+    position: relative;
+    width: 100%;
+    height: 83%;
+}
+
+#char-1, #char-2, #char-3, #char-4 {
+    overflow: auto;
+    position: relative;
+    width: 12.5%;
+    height: 100%;
+}
+
+#enemy {
+    overflow: auto;
+    position: relative;
+    width: 50%;
+    height: 100%;
+}
+
+#bot-condition {
+    overflow: auto;
+    position: relative;
+    width: 100%;
+    height: 2%;
+}
+#enemy-condition-left-space,#enemy-status-left-space,#enemy-condition-right-space,#enemy-status-right-space,#enemy-left-space,#enemy-right-space{
+    overflow: auto;
+    position: relative;
+    width: 17.5%;
+    height: 100%;
+}
+#enemy,#enemy-status,#enemy-condition{
+    overflow: auto;
+    position: relative;
+    width: 15%;
+    height: 100%;
+}
+
+.main-bot {
+    overflow: auto;
+    position: relative;
+    width: 1500px;
+    height: 260px;
+    border: 10px black;
+}
+
+#main-bot-left,#main-bot-right{
+    overflow: auto;
+    position: relative;
+    width: 5%;
+    height: 100%;
+    border: 10px black;
+    background-color: black;
+}
+#main-bot-content-left,#main-bot-content-right{
+    overflow: auto;
+    position: relative;
+    width: 45%;
+    height: 100%;
+    border: 10px black;
+}
+.footer {
+    overflow: auto;
+    position: relative;
+    width: 100%;
+    height: 130px;
+    background-color: dimgray;
+    clear: left;
+}
+
+.line{
+    overflow: auto;
+    position: relative;
+    width: 100%;
+    height: 10px;
+    background-color: black;
+}
+
+.gridcontent {
+    width: 8.33%;
+    margin: 0;
+    border-right: 1px solid grey;
+    height: 100%;
+    float: left;
+    position: relative;
+}
+
+#canvasMainScreen {
+    position: relative;
+    left: 1.5%;
+    top: 2.5%
+}
