@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+      .hover-me:hover + .popup {
+          display: block;
+      }
+
+      .popup {
+          display: none;
+          position: absolute;
+          background-color: #fff;
+          border: solid 1px #333;
+          padding: 10px;
+      }
+  </style>
+</head>
+<body>
+<div class="hover-me">Hover over me!</div>
+<div class="popup">This is the popup content.</div>
+
+</body>
+</html>

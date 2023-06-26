@@ -1,3 +1,4 @@
+// Hiển thị hình ảnh nhân vật, hoạt ảnh, etc..
 function displayCharacter(divElementId,imgElementSrc){
     let divElement = document.getElementById(divElementId);
     let imgElement = document.createElement('img');
@@ -16,3 +17,20 @@ displayCharacter('char-1-inside',char1Src);
 displayCharacter('char-2-inside',char2Src);
 displayCharacter('char-3-inside',char3Src);
 displayCharacter('char-4-inside',char4Src);
+
+
+// tạo popup cho item
+function popupItemDetail(itemNumber,popupNumber){
+    let hoverMe = document.querySelector(`#inventory-item-${itemNumber}`);
+    let popup = document.querySelector(`#item-popup-${popupNumber}`);
+
+    hoverMe.addEventListener('mouseover', function() {
+        popup.style.display = 'block';
+    });
+
+    hoverMe.addEventListener('mouseout', function() {
+        popup.style.display = 'none';
+    });
+}
+popupItemDetail(1,1);
+popupItemDetail(2,2);
