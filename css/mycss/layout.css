@@ -523,3 +523,19 @@ div.inventory-button:active {
 p {
     color: wheat;
 }
+
+button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    font-family: "Old English Text MT", serif;
+    text-shadow: 1px 1px 2px #000;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+button:active {
+    transform: scale(0.95); /* add scale transform */
+}
