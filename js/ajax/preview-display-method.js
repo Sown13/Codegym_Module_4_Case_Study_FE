@@ -72,5 +72,5 @@ function displayCharacterAction(characterIndex,characterActionSrc) {
     setTimeout(function() { removeIcon('enemy-inside'); }, 700);
     setTimeout(function() { displayIcon('enemy-inside',enemySrc)}, 700);
 }
-displayIcon(`character-avatar`,char1Src)
+displayIcon(`character-avatar`,`../img/before-convert/crusader-avatar.png`)
 displayIcon(`skill-detail-left`,`../img/before-convert/skill-2.webp`)
