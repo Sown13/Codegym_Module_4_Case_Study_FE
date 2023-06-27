@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
     margin: auto;
+
 }
 
 .border-screen {
@@ -15,9 +16,12 @@
     position: relative;
     width: 100%;
     height: 130px;
-    background-color: dimgray;
+    background-color: black;
 }
 
+body {
+    background: black;
+}
 .main-top {
     overflow: auto;
     position: relative;
@@ -25,14 +29,19 @@
     height: 300px;
     border: 10px black;
     background-image: url("../../img/gif/background_forest.gif");
+    /*animation: moveBackground 20s linear infinite;*/
 }
+/*@keyframes moveBackground {*/
+/*    from { background-position: 0 0; }*/
+/*    to { background-position: -100% 0; }*/
+/*}*/
 
 #left-space, #right-space {
     overflow: auto;
     position: relative;
     width: 10%;
     height: 100%;
-    background-color: black;
+    background-color: transparent;
 }
 
 #mid {
@@ -69,6 +78,9 @@
     width: 12.5%;
     height: 100%;
 }
+.character:hover{
+    filter: brightness(2);
+}
 
 #enemy {
     overflow: auto;
@@ -83,13 +95,15 @@
     width: 100%;
     height: 2%;
 }
-#enemy-condition-left-space,#enemy-status-left-space,#enemy-condition-right-space,#enemy-status-right-space,#enemy-left-space,#enemy-right-space{
+
+#enemy-condition-left-space, #enemy-status-left-space, #enemy-condition-right-space, #enemy-status-right-space, #enemy-left-space, #enemy-right-space {
     overflow: auto;
     position: relative;
     width: 17.5%;
     height: 100%;
 }
-#enemy,#enemy-status,#enemy-condition{
+
+#enemy, #enemy-status, #enemy-condition {
     overflow: auto;
     position: relative;
     width: 15%;
@@ -103,41 +117,58 @@
     height: 260px;
     border: 10px black;
 }
+.main-bot::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url("../../img/before-convert/background-menu.jpg");
+    filter: brightness(3);
+}
 
-#main-bot-left,#main-bot-right{
+
+#main-bot-left, #main-bot-right {
     overflow: auto;
     position: relative;
     width: 5%;
     height: 100%;
     border: 10px black;
-    background-color: black;
+    background-color: transparent;
 }
-#main-bot-content-left,#main-bot-content-right{
+
+#main-bot-content-left, #main-bot-content-right {
     overflow: auto;
     position: relative;
     width: 45%;
     height: 100%;
     border: 10px black;
 }
-#character-detail-border{
+
+#character-detail-border {
     overflow: auto;
     position: relative;
     width: 35%;
     height: 100%;
 }
-#character-avatar-border{
+
+#character-avatar-border {
     overflow: auto;
     position: relative;
     width: 45%;
     height: 25%;
 }
-#character-name{
+
+#character-name {
     overflow: auto;
     position: relative;
     width: 55%;
     height: 25%;
 }
-#character-detail{
+
+#character-detail {
     overflow: auto;
     position: relative;
     width: 100%;
@@ -145,19 +176,21 @@
 }
 
 
-#character-misc{
+#character-misc {
     overflow: auto;
     position: relative;
     width: 65%;
     height: 100%;
 }
-#skill-border{
+
+#skill-border {
     overflow: auto;
     position: relative;
     width: 100%;
     height: 25%;
 }
-.skill{
+
+.button-effect {
     overflow: auto;
     float: left;
     position: relative;
@@ -165,50 +198,57 @@
     height: 100%;
     border: 1px solid;
 }
-#skill-detail{
-    overflow: auto;
-    position: relative;
-    width: 100%;
-    height: 25%;
-}
-#equipment-1-border,#equipment-2-border{
+
+#skill-detail {
     overflow: auto;
     position: relative;
     width: 100%;
     height: 25%;
 }
 
-#inventory-and-enemy-border{
+#equipment-1-border, #equipment-2-border {
+    overflow: auto;
+    position: relative;
+    width: 100%;
+    height: 25%;
+}
+
+#inventory-and-enemy-border {
     overflow: auto;
     position: relative;
     width: 65%;
     height: 100%;
 }
-#log-border{
+
+#log-border {
     overflow: auto;
     position: relative;
     width: 35%;
     height: 100%;
 }
-#inventory-button,#enemy-button{
+
+#inventory-button, #enemy-button {
     overflow: auto;
     position: relative;
     width: 35%;
     height: 25%;
 }
-#menu-button{
+
+#menu-button {
     overflow: auto;
     position: relative;
     width: 30%;
     height: 25%;
 }
-#inventory-detail{
+
+#inventory-detail {
     overflow: auto;
     position: relative;
     width: 100%;
     height: 75%;
 }
-.inventory-slot{
+
+.inventory-slot {
     float: left;
     overflow: auto;
     position: relative;
@@ -217,6 +257,19 @@
     border: 1px solid;
 }
 
+#combat-result-button {
+    overflow: auto;
+    position: relative;
+    width: 100%;
+    height: 25%;
+}
+
+#combat-result-display {
+    overflow: auto;
+    position: relative;
+    width: 100%;
+    height: 75%;
+}
 
 
 .footer {
@@ -228,7 +281,7 @@
     clear: left;
 }
 
-.line{
+.line {
     overflow: auto;
     position: relative;
     width: 100%;
@@ -244,7 +297,7 @@
 }
 
 
-div.skill {
+div.button-effect {
     display: inline-block;
     background-color: #333;
     border-radius: 10px;
@@ -253,7 +306,7 @@ div.skill {
     cursor: pointer;
 }
 
-div.skill::before {
+div.button-effect::before {
     content: "";
     display: block;
     position: absolute;
@@ -265,7 +318,7 @@ div.skill::before {
     background-size: cover;
 }
 
-div.skill::after {
+div.button-effect::after {
     content: "";
     display: block;
     position: absolute;
@@ -277,14 +330,17 @@ div.skill::after {
     border: solid #fff;
 }
 
-div.skill:hover, div.inventory-slot:hover {background-color: #3e8e41}
+div.button-effect:hover, div.inventory-slot:hover {
+    background-color: #3e8e41
+}
+
 img.inventory-item {
     display: inline-block;
     cursor: pointer;
     transition: transform 0.2s;
 }
 
-div.skill:active {
+div.button-effect:active {
     background-color: #3e8e41;
     /*box-shadow: 0 5px #666;*/
     transform: scale(0.9);
@@ -297,6 +353,13 @@ div.inventory-slot {
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
 }
+div#inventory-button,div#enemy-button,div#menu-button {
+     display: inline-block;
+     background-color: #800000;
+     border: solid 2px #333;
+     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+     box-sizing: border-box;
+ }
 
 .inventory-item {
     position: absolute;
@@ -308,6 +371,7 @@ div.inventory-slot {
     transform: translateX(50%) translateY(-5%) scale(1.1);
     filter: brightness(2);
 }
+
 /**/
 
 /*.inventory-item:hover + .popup {*/
@@ -317,7 +381,53 @@ div.inventory-slot {
 .popup {
     display: none;
     position: absolute;
-    background-color: #fff;
-    border: solid 1px #333;
+    background-color: #333;
+    border: solid 1px #fff;
+    color: #fff;
     padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
 }
+
+
+/*---*/
+div.inventory-button {
+    display: inline-block;
+    background-color: #333;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+div.inventory-button::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../img/gif/hunter.gif");
+    background-size: cover;
+}
+
+div.inventory-button::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -5px;
+    left: -5px;
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+    border-radius: inherit;
+    border: solid #fff;
+}
+
+div.inventory-button:active {
+    background-color: #3e8e41;
+    /*box-shadow: 0 5px #666;*/
+    transform: scale(0.9);
+}
+
+
