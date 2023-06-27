@@ -8,17 +8,20 @@
 
     </style>
     <link rel="stylesheet" href="../css/mycss/layout.css">
+    <link rel="stylesheet" href="../css/mycss/footer.css">
 </head>
 <body>
 <div class="border-screen">
     <!--    Header-->
-    <div class="header"></div>
+    <div class="header">
+        <img src="../img/before-convert/header-banner.jpg" style="position: absolute; bottom: 0;left: 50%; transform: translateX(-50%);">
+    </div>
     <!--    Line-->
     <div class="line"></div>
     <!--    Hiển thị nội dung minh họa game-->
     <div class="main-top">
         <div id="left-space" class="layout">
-            <img src="../img/before-convert/left-hand.png" style="width: 100%; height: 95%; object-fit: cover;">
+<!--            <img src="../img/before-convert/left-side.jpg" style="width: 100%; height: 95%; object-fit: cover;">-->
         </div>
         <div id="mid" class="layout">
             <div id="top-status" class="layout">
@@ -34,26 +37,29 @@
             <div id="mid-avatar" class="layout">
                 <div id="char-1" class="layout">
                     <img id="char-1-inside"
-                         style="position: absolute; bottom: 0;left: 50%; transform: translateX(-50%);">
+                         style="position: absolute; bottom: 0;left: 50%; transform: translateX(-50%);" class="character">
                 </div>
                 <div id="char-2" class="layout">
                     <img id="char-2-inside"
-                         style="position: absolute; bottom: 0;left: 50%; transform: translateX(-50%);">
+                         style="position: absolute; bottom: 0;left: 50%; transform: translateX(-50%);" class="character">
                 </div>
                 <div id="char-3" class="layout">
                     <img id="char-3-inside"
-                         style="position: absolute; bottom: 0;left: 50%; transform: translateX(-50%);">
+                         style="position: absolute; bottom: 0;left: 50%; transform: translateX(-50%);" class="character">
                 </div>
                 <div id="char-4" class="layout">
                     <img id="char-4-inside"
-                         style="position: absolute; bottom: 0;left: 50%; transform: translateX(-50%);">
+                         style="position: absolute; bottom: 0;left: 50%; transform: translateX(-50%);" class="character">
                 </div>
                 <div id="enemy-left-space" class="layout"></div>
                 <div id="enemy" class="layout">
                     <img id="enemy-inside"
                          style="position: absolute; bottom: 0;left: 50%; transform: translateX(-50%);">
                 </div>
-                <div id="enemy-right-space" class="layout"></div>
+                <div id="enemy-right-space" class="layout">
+                    <div id="item-popup-1" class="popup">This is the popup content.</div>
+                    <div id="item-popup-2" class="popup">This is the popup content 2.</div>
+                </div>
             </div>
             <div id="bot-condition" class="layout">
                 <div id="char-1-condition" class="layout"></div>
@@ -66,7 +72,7 @@
             </div>
         </div>
         <div id="right-space" class="layout">
-            <img src="../img/before-convert/right-hand.png" style="width: 100%; height: 95%; object-fit: cover;">
+<!--            <img src="../img/before-convert/right-side.jpg" style="width: 100%; height: 95%; object-fit: cover;">-->
         </div>
     </div>
 
@@ -74,7 +80,9 @@
     <div class="line"></div>
     <!--    UI điều khiển chính của game-->
     <div class="main-bot">
-        <div id="main-bot-left" class="layout"></div>
+        <div id="main-bot-left" class="layout">
+<!--            <img src="../img/before-convert/left-side-menu.jpg" style="width: 100%; height: 98%; object-fit: cover;filter:brightness(2)">-->
+        </div>
         <div id="main-bot-content-left" class="layout">
             <div id="character-detail-border" class="layout">
                 <div id="character-avatar-border" class="layout">
@@ -86,22 +94,30 @@
             </div>
             <div id="character-misc" class="layout">
                 <div id="skill-border" class="layout">
-                    <div id="skill-1" class="skill"></div>
-                    <div id="skill-2" class="skill"></div>
-                    <div id="skill-3" class="skill"></div>
-                    <div id="skill-4" class="skill"></div>
-                    <div id="skill-5" class="skill"></div>
+                    <div id="skill-1" class="button-effect"></div>
+                    <div id="skill-2" class="button-effect"></div>
+                    <div id="skill-3" class="button-effect"></div>
+                    <div id="skill-4" class="button-effect"></div>
+                    <div id="skill-5" class="button-effect"></div>
                 </div>
-                <div id="skill-detail" class="layout"></div>
+                <div id="skill-detail" class="layout">
+                    
+                </div>
                 <div id="equipment-1-border" class="layout"></div>
                 <div id="equipment-2-border" class="layout"></div>
             </div>
         </div>
         <div id="main-bot-content-right" class="layout">
             <div id="inventory-and-enemy-border" class="layout">
-                <div id="inventory-button" class="layout"></div>
-                <div id="enemy-button" class="layout"></div>
-                <div id="menu-button" class="layout"></div>
+                <div id="inventory-button" class="layout">
+                    <img id="inventory-button-icon" style="position: absolute; bottom: 0;left: 50%; transform: translateX(-50%);" class="inventory-button">
+                </div>
+                <div id="enemy-button" class="layout">
+                    <img id="enemy-button-icon" style="position: absolute; bottom: 0;left: 50%; transform: translateX(-50%);" class="enemy-button">
+                </div>
+                <div id="menu-button" class="layout">
+                    <img id="menu-button-icon" style="position: absolute; bottom: 0;left: 50%; transform: translateX(-50%);" class="inventory-button">
+                </div>
                 <div id="inventory-detail" class="layout">
                     <div id="inventory-1" class="inventory-slot">
                         <img id="inventory-item-1" class="inventory-item" src="../img/before-convert/items/Seething_Sorrow_item.webp" >
@@ -167,11 +183,13 @@
                 </div>
             </div>
             <div id="log-border" class="layout">
-                <div id="item-popup-1" class="popup">This is the popup content.</div>
-                <div id="item-popup-2" class="popup">This is the popup content 2.</div>
+                <div id="combat-result-button" class="layout"></div>
+                <div id="combat-result-display" class="layout"></div>
             </div>
         </div>
-        <div id="main-bot-right" class="layout"></div>
+        <div id="main-bot-right" class="layout">
+<!--            <img src="../img/before-convert/right-side-menu.jpg" style="width: 100%; height: 98%; object-fit: cover;">-->
+        </div>
     </div>
     <!--    Line-->
     <div class="line"></div>
