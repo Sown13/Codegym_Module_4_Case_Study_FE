@@ -8,7 +8,6 @@ function displayIcon(divElementId,imgElementSrc){
     imgElement.style.cssText = divElement.style.cssText;
     imgElement.style.cssFloat = divElement.style.cssFloat;
     divElement.parentNode.replaceChild(imgElement, divElement);
-    console.log(2222)
 }
 
 let char1Src = '../img/gif/gun-man.gif';
@@ -16,11 +15,7 @@ let char2Src = '../img/gif/robber.gif';
 let char3Src = '../img/gif/crusader.gif';
 let char4Src = '../img/gif/man-at-arm-idle.gif';
 let enemySrc = '../img/gif/hag.gif';
-displayIcon('enemy-inside',enemySrc);
-displayIcon('char-1-inside',char1Src);
-displayIcon('char-2-inside',char2Src);
-displayIcon('char-3-inside',char3Src);
-displayIcon('char-4-inside',char4Src);
+
 
 function removeIcon(divElementId){
     let divElement = document.getElementById(divElementId);
@@ -54,8 +49,9 @@ function popupItemDetail(itemNumber,popupNumber){
         popup.style.display = 'none';
     });
 }
-popupItemDetail(1,1);
-popupItemDetail(2,2);
+// popupItemDetail(1,1);
+// popupItemDetail(2,2);
+
 
 
 let characterAction3 ='../img/before-convert/crusader-attack.webp';
@@ -74,3 +70,38 @@ function displayCharacterAction(characterIndex,characterActionSrc) {
 }
 displayIcon(`character-avatar`,`../img/before-convert/crusader-avatar.png`)
 displayIcon(`skill-detail-left`,`../img/before-convert/skill-2.webp`)
+
+let itemDescription = [];
+function describeItem(itemInInventoryList){
+    itemDescription = [];
+    for (let i = 0; i < itemInInventoryList.length; i++) {
+        itemDescription.push("[" + itemInInventoryList[i].itemName +"]" + "<br>" + "[Str:"+ itemInInventoryList[i].itemStr + "]" +"<br>" + "[Int:"
+        + itemInInventoryList[i].itemInt + "]" + "<br>" + "[Mind:" + itemInInventoryList[i].itemMind + "]" +"<br>" + "[Vit:" +  itemInInventoryList[i].itemVit + "]");
+    }
+}
+function equip(){
+
+}
+function replacePopupItem(divElementId,itemDescription){
+    let divElement = document.getElementById(divElementId);
+    let newDiv = document.createElement('div');
+    newDiv.innerHTML = itemDescription;
+    newDiv.className = divElement.className;
+    newDiv.id = divElement.id;
+    // document.getElementById(newDiv.id).addEventListener(equip());
+    newDiv.style.cssText = divElement.style.cssText;
+    newDiv.style.cssFloat = divElement.style.cssFloat;
+    divElement.parentNode.replaceChild(newDiv, divElement);
+}
+
+function displayInventory(inventory,itemInInventoryList){
+    describeItem(itemInInventoryList);
+    for (let i = 0; i < inventory.length; i++) {
+        if(itemInInventoryList !== null) {
+            replacePopupItem(`item-popup-${i+1}`,itemDescription[i]);
+            displayIcon(`inventory-item-${i + 1}`, itemInInventoryList[i].itemImage);
+            popupItemDetail(i+1,i+1);
+        }
+    }
+}
+

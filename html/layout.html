@@ -9,6 +9,16 @@
     </style>
     <link rel="stylesheet" href="../css/mycss/layout.css">
     <link rel="stylesheet" href="../css/mycss/footer.css">
+    <script src="../js/jquery-3.7.0.min.js"></script>
+    <script src="../js/class/intermediate/class-character-item.js"> </script>
+    <script src="../js/class/intermediate/class-inventory.js"> </script>
+    <script src="../js/class/intermediate/class-session-character.js"> </script>
+    <script src="../js/class/main_entity/class-character-detail.js"> </script>
+    <script src="../js/class/main_entity/class-game-character.js"></script>
+    <script src="../js/class/main_entity/class-game-item.js"> </script>
+    <script src="../js/class/main_entity/class-game-session.js"> </script>
+    <script src="../js/class/main_entity/class-skill.js"> </script>
+    <script src="../js/class/main_entity/class-user-entity.js"> </script>
 </head>
 <body>
 <div class="border-screen">
@@ -27,25 +37,24 @@
         <div id="mid" class="layout">
             <div id="top-status" class="layout">
                 <div id="char-1-status" class="status-layout">
-                    <p> Hp: ?/? </p>
-                    <p> Mp: ?/? </p>
+                    <p id="char-1-hp" class="status"> Hp: ?/? </p>
+                    <p id="char-1-mp" class="status"> Mp: ?/? </p>
                 </div>
                 <div id="char-2-status" class="status-layout">
-                    <p> Hp: ?/? </p>
-                    <p> Mp: ?/? </p>
+                    <p id="char-2-hp" class="status"> Hp: ?/? </p>
+                    <p id="char-2-mp" class="status"> Mp: ?/? </p>
                 </div>
                 <div id="char-3-status" class="status-layout">
-                    <p> Hp: ?/? </p>
-                    <p> Mp: ?/? </p>
+                    <p id="char-3-hp" class="status"> Hp: ?/? </p>
+                    <p id="char-3-mp" class="status"> Mp: ?/? </p>
                 </div>
                 <div id="char-4-status" class="status-layout">
-                    <p> Hp: ?/? </p>
-                    <p> Mp: ?/? </p>
+                    <p id="char-4-hp" class="status"> Hp: ?/? </p>
+                    <p id="char-4-mp" class="status"> Mp: ?/? </p>
                 </div>
                 <div id="enemy-status-left-space" class="layout"></div>
                 <div id="enemy-status" class="layout">
-                    <p> Hp: ?/? </p>
-                    <p> Mp: ?/? </p>
+                    <p id="enemy-hp" class="status"> Hp: ?/? </p>
                 </div>
                 <div id="enemy-status-right-space" class="layout"></div>
 
@@ -83,7 +92,25 @@
                 </div>
                 <div id="enemy-right-space" class="layout">
                     <div id="item-popup-1" class="popup">This is the popup content.</div>
-                    <div id="item-popup-2" class="popup">This is the popup content 2.</div>
+                    <div id="item-popup-2" class="popup">This is the popup content.</div>
+                    <div id="item-popup-3" class="popup">This is the popup content.</div>
+                    <div id="item-popup-4" class="popup">This is the popup content.</div>
+                    <div id="item-popup-5" class="popup">This is the popup content.</div>
+                    <div id="item-popup-6" class="popup">This is the popup content.</div>
+                    <div id="item-popup-7" class="popup">This is the popup content.</div>
+                    <div id="item-popup-8" class="popup">This is the popup content.</div>
+                    <div id="item-popup-9" class="popup">This is the popup content.</div>
+                    <div id="item-popup-10" class="popup">This is the popup content.</div>
+                    <div id="item-popup-11" class="popup">This is the popup content.</div>
+                    <div id="item-popup-12" class="popup">This is the popup content.</div>
+                    <div id="item-popup-13" class="popup">This is the popup content.</div>
+                    <div id="item-popup-14" class="popup">This is the popup content.</div>
+                    <div id="item-popup-15" class="popup">This is the popup content.</div>
+                    <div id="item-popup-16" class="popup">This is the popup content.</div>
+                    <div id="item-popup-17" class="popup">This is the popup content.</div>
+                    <div id="item-popup-18" class="popup">This is the popup content.</div>
+                    <div id="item-popup-19" class="popup">This is the popup content.</div>
+                    <div id="item-popup-20" class="popup">This is the popup content.</div>
                 </div>
             </div>
             <div id="bot-condition" class="layout">
@@ -196,13 +223,11 @@
                 </div>
                 <div id="inventory-detail" class="layout">
                     <div id="inventory-1" class="inventory-slot">
-                        <img id="inventory-item-1" class="inventory-item"
-                             src="../img/before-convert/items/Seething_Sorrow_item.webp">
+                        <img id="inventory-item-1" class="inventory-item">
 
                     </div>
                     <div id="inventory-2" class="inventory-slot">
-                        <img id="inventory-item-2" class="inventory-item"
-                             src="../img/before-convert/items/Seething_Sorrow_item.webp">
+                        <img id="inventory-item-2" class="inventory-item" >
                     </div>
                     <div id="inventory-3" class="inventory-slot">
                         <img id="inventory-item-3" class="inventory-item">
@@ -279,7 +304,12 @@
 
 
 </body>
-<script src="../js/class/main_entity/class-game-character.js"></script>
+
+
+
 <script src="../js/ajax/preview-display-method.js"></script>
 <script src="../js/ajax/ajax.js"></script>
+<script src="../js/ajax/game-logic.js"></script>
+<button onclick="loadGame(9)">Load game</button>
+
 </html>

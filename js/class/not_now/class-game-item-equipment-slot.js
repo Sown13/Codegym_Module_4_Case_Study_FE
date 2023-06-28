@@ -1,4 +1,4 @@
-class ClassGameItemEquipmentSlot {
+class GameItemEquipmentSlot {
     constructor(gameItemEquipmentSlotId,equipmentSlot,gameItem) {
         this._gameItemEquipmentSlotId=gameItemEquipmentSlotId;
         this._equipmentSlot=equipmentSlot;

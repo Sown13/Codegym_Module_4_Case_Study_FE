@@ -1,5 +1,4 @@
-
- class GameCharacter{
+class GameCharacter{
      constructor(characterId,characterName, characterLevel, characterExp, characterType, characterStr, characterInt, characterVit, characterMind, statPoint, skillPoint, characterImage, isAlive, isEnemy) {
 
          this._characterId = characterId;

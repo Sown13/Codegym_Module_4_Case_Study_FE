@@ -1,4 +1,4 @@
-class ClassCharacterDetail{
+class CharacterDetail{
     constructor(characterDetailId,health,mana,physAtk,physDef,magicAtk,magicDef,gameCharacter) {
 
         this._characterDetailId = characterDetailId;
