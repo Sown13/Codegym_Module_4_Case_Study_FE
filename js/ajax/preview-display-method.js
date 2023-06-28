@@ -69,7 +69,7 @@ function displayCharacterAction(characterIndex,characterActionSrc) {
     setTimeout(function() { displayIcon('enemy-inside',enemySrc)}, 700);
 }
 displayIcon(`character-avatar`,`../img/before-convert/crusader-avatar.png`)
-displayIcon(`skill-detail-left`,`../img/before-convert/skill-2.webp`)
+displayIcon(`skill-detail-left`,`../img/skill/skill-2.webp`)
 
 let itemDescription = [];
 function describeItem(itemInInventoryList){
@@ -78,6 +78,76 @@ function describeItem(itemInInventoryList){
         itemDescription.push("[" + itemInInventoryList[i].itemName +"]" + "<br>" + "[Str:"+ itemInInventoryList[i].itemStr + "]" +"<br>" + "[Int:"
         + itemInInventoryList[i].itemInt + "]" + "<br>" + "[Mind:" + itemInInventoryList[i].itemMind + "]" +"<br>" + "[Vit:" +  itemInInventoryList[i].itemVit + "]");
     }
+}
+function showCharacterInfo(){
+    document.getElementById("main-bot-content-left").innerHTML =
+        `<div id="character-detail-border" className="layout">
+            <div id="character-avatar-border" className="layout">
+                <img id="character-avatar"
+                     style="position: absolute;object-fit: cover;bottom: 0;width: 100%;height: 100%">
+            </div>
+            <div id="character-name" className="layout">
+                <p style="color: wheat"> Công nghiện / Hp: ?/? ///// Mp: ?/?</p>
+            </div>
+            <div id="character-detail" className="layout">
+                <p style="color: wheat"> Str: , Int: ,...</p>
+            </div>
+        </div>
+        <div id="character-misc" className="layout">
+            <div id="skill-border" className="layout">
+                <div id="skill-1" className="button-effect">
+                    <img id="skill-1-image" src="../img/skill/skill-2.webp" style="width: 100%"
+                         className="skill-button">
+                </div>
+                <div id="skill-2" className="button-effect">
+                    <img id="skill-2-image" src="../img/skill/skill-3.webp" style="width: 100%"
+                         className="skill-button">
+                </div>
+                <div id="skill-3" className="button-effect">
+                    <img id="skill-3-image" src="../img/skill/skill-4.webp" style="width: 100%"
+                         className="skill-button">
+                </div>
+                <div id="skill-4" className="button-effect">
+                    <img id="skill-4-image" src="../img/skill/skill-5.webp" style="width: 100%"
+                         className="skill-button">
+                </div>
+                <div id="skill-5" className="button-effect">
+                    <img id="skill-5-image" src="../img/skill/skill-6.webp" style="width: 100%"
+                         className="skill-button">
+                </div>
+            </div>
+            <div id="skill-detail" className="character-detail-layout">
+                <div id="skill-detail-left">
+                    <img id="skill-image" style="width: 100%" className="layout">
+                </div>
+                <div id="skill-detail-right">
+                    <button type="button"> Cộng điểm</button>
+                    <button type="button"> Sử dụng</button>
+                    <button type="button" onClick="displayCharacterAction(3,characterAction3)"> Đánh thường</button>
+                    <p id="skill-detail-describe">Nộ long cước , Skill level, type: vật lý, sát thương: 10,mana:
+                        0</p>
+                </div>
+            </div>
+            <div id="equipment-1-border" className="character-detail-layout">
+                <div id="equipment-1-border-left">
+                    <img id="equipment-1-image" style="width: 100%" className="layout">
+                </div>
+                <div id="equipment-1-border-right">
+                    <p id="equipment-1-detail"> Trống </p>
+                    <button type="button"> Gỡ</button>
+                </div>
+            </div>
+            <div id="equipment-2-border" className="character-detail-layout">
+                <div id="equipment-2-border-left">
+                    <img id="equipment-2-image" src="../img/before-convert/items/Seething_Sorrow_item.webp"
+                         style="width: 100%;height: 100%" className="layout">
+                </div>
+                <div id="equipment-2-border-right">
+                    <p id="equipment-2-detail"> Ma kiếm </p>
+                    <button type="button"> Gỡ</button>
+                </div>
+            </div>
+        </div>`;
 }
 function equip(){
 
@@ -96,12 +166,14 @@ function replacePopupItem(divElementId,itemDescription){
 
 function displayInventory(inventory,itemInInventoryList){
     describeItem(itemInInventoryList);
-    for (let i = 0; i < inventory.length; i++) {
-        if(itemInInventoryList !== null) {
+    for (let i = 0; i < itemInInventoryList.length; i++) {
+        if(itemInInventoryList[i] !== null) {
             replacePopupItem(`item-popup-${i+1}`,itemDescription[i]);
             displayIcon(`inventory-item-${i + 1}`, itemInInventoryList[i].itemImage);
             popupItemDetail(i+1,i+1);
         }
     }
 }
+
+// document.getElementById("char-1-inside").addEventListener(showCharacterInfo());
 
