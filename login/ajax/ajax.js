@@ -65,7 +65,7 @@ function login() {
             localStorage.setItem("idUser", userLogin.id)
             // localStorage.setItem("nameUser", userLogin.username)
             localStorage.setItem("emailUser", userLogin.email)
-            alert("done !")
+            alert("Login Successfully")
             changePage();
             user = userLogin;
             console.log(user)

@@ -4,7 +4,18 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-
+        /*@font-face {*/
+        /*    font-family: "Darkest Dungeon"; !* Đặt tên cho font chữ *!*/
+        /*    src: url("../../css/frontDarkestDungeonfont/DwarvenAxeBBW00Regular.ttf"); !* Đường dẫn tới font chữ *!*/
+        /*}*/
+        /*h1 {*/
+        /*    font-family: "Darkest Dungeon", Arial, sans-serif; !* Sử dụng font chữ Darkest Dungeon *!*/
+        /*    position: absolute;*/
+        /*    bottom: 40%;*/
+        /*    left: 50%;*/
+        /*    transform: translateX(-50%);*/
+        /*    color: white;*/
+        /*}*/
 
         .login-button,
         .register-button {
@@ -16,21 +27,18 @@
             cursor: pointer;
             margin-left: 10px;
         }
+        .endOfHTML {
+            background-color: black; /* Thay đổi màu nền thành đen */
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
     </style>
 
     <link rel="stylesheet" href="../../css/mycss/layout.css">
     <link rel="stylesheet" href="../../css/mycss/footer.css">
 </head>
 <body>
-<!--<script>-->
-<!--    var currentURL = window.location.href; // Lấy URL hiện tại-->
-<!--    var newURL = currentURL.replace("/Codegym_Module_4_Case_Study_FE/login/html/trang-chu.html", "/trang-chu");-->
-<!--    window.history.replaceState(null, null, newURL); // Thay đổi URL hiện tại của trang-->
-
-<!--    // Kiểm tra URL mới-->
-<!--    console.log(window.location.href);-->
-<!--</script>-->
-
 <div class="border-screen">
     <!--    Header-->
     <div class="header">
@@ -42,30 +50,24 @@
     <!--    Hiển thị nội dung minh họa game-->
     <div class="main-top">
         <div id="left-space" class="layout">
-            <!--            <img src="../img/before-convert/left-side.jpg" style="width: 100%; height: 95%; object-fit: cover;">-->
         </div>
         <div id="mid" class="layout">
             <div id="top-status" class="layout">
                 <div id="char-1-status" class="status-layout">
-<!--                    <p> Hp: ?/? </p>-->
-<!--                    <p> Mp: ?/? </p>-->
                 </div>
                 <div id="char-2-status" class="status-layout">
-<!--                    <p> Hp: ?/? </p>-->
-<!--                    <p> Mp: ?/? </p>-->
                 </div>
                 <div id="char-3-status" class="status-layout">
                 </div>
                 <div id="enemy-status-left-space" class="layout"></div>
                 <div id="enemy-status" class="layout">
                 </div>
-
                 <div id="enemy-status-right-space" class="layout"></div>
-
             </div>
-            <h1 style="position: absolute; bottom: 30%;left: 50%; transform: translateX(-50%); color: white">Welcome to our game</h1>
+            <h1 style="position: absolute; bottom: 50%;left: 50%; transform: translateX(-50%); color: white">Welcome to our game</h1>
+<!--            <h1>Darkest Dungeon</h1>-->
             <br><br>
-            <div class="skill-button" style="position: absolute; bottom: 20%;left: 50%; transform: translateX(-50%);">
+            <div class="skill-button" style="position: absolute; bottom: 30%;left: 50%; transform: translateX(-50%);">
                 <a href="loginForm.html" class="login-button">Đăng nhập</a>
                 <a href="registerForm.html" class="register-button">Đăng ký</a>
             </div>
@@ -73,7 +75,6 @@
             <p></p>
         </div>
         <div id="right-space" class="layout">
-            <!--            <img src="../img/before-convert/right-side.jpg" style="width: 100%; height: 95%; object-fit: cover;">-->
         </div>
     </div>
 
@@ -81,173 +82,15 @@
     <div class="line"></div>
     <!--    UI điều khiển chính của game-->
     <div class="main-bot">
-<!--        <div id="main-bot-left" class="layout">-->
-<!--            &lt;!&ndash;            <img src="../img/before-convert/left-side-menu.jpg" style="width: 100%; height: 98%; object-fit: cover;filter:brightness(2)">&ndash;&gt;-->
-<!--        </div>-->
-<!--        <div id="main-bot-content-left" class="layout">-->
-<!--            <div id="character-detail-border" class="layout">-->
-<!--                <div id="character-avatar-border" class="layout">-->
-<!--                    <img id="character-avatar"-->
-<!--                         style="position: absolute;object-fit: cover;bottom: 0;width: 100%;height: 100%">-->
-<!--                </div>-->
-<!--                <div id="character-name" class="layout">-->
-<!--                    <p style="color: wheat"> Công nghiện / Hp: ?/? ///// Mp: ?/?</p>-->
-<!--                </div>-->
-<!--                <div id="character-detail" class="layout">-->
-<!--                    <p style="color: wheat"> Str: , Int: ,...</p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div id="character-misc" class="layout">-->
-<!--                <div id="skill-border" class="layout">-->
-<!--                    <div id="skill-1" class="button-effect">-->
-<!--                        <img id="skill-1-image" src="../img/before-convert/skill-2.webp" style="width: 100%"-->
-<!--                             class="skill-button">-->
-<!--                    </div>-->
-<!--                    <div id="skill-2" class="button-effect">-->
-<!--                        <img id="skill-2-image" src="../img/before-convert/skill-3.webp" style="width: 100%"-->
-<!--                             class="skill-button">-->
-<!--                    </div>-->
-<!--                    <div id="skill-3" class="button-effect">-->
-<!--                        <img id="skill-3-image" src="../img/before-convert/skill-4.webp" style="width: 100%"-->
-<!--                             class="skill-button">-->
-<!--                    </div>-->
-<!--                    <div id="skill-4" class="button-effect">-->
-<!--                        <img id="skill-4-image" src="../img/before-convert/skill-5.webp" style="width: 100%"-->
-<!--                             class="skill-button">-->
-<!--                    </div>-->
-<!--                    <div id="skill-5" class="button-effect">-->
-<!--                        <img id="skill-5-image" src="../img/before-convert/skill-6.webp" style="width: 100%"-->
-<!--                             class="skill-button">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div id="skill-detail" class="character-detail-layout">-->
-<!--                    <div id="skill-detail-left">-->
-<!--                        <img id="skill-image" style="width: 100%" class="layout">-->
-<!--                    </div>-->
-<!--                    <div id="skill-detail-right">-->
-<!--                        <button type="button"> Cộng điểm</button>-->
-<!--                        <button type="button"> Sử dụng</button>-->
-<!--                        <button type="button" onclick="displayCharacterAction(3,characterAction3)"> Đánh thường</button>-->
-<!--                        <p id="skill-detail-describe">Nộ long cước , Skill level, type: vật lý, sát thương: 10,mana:-->
-<!--                            0</p>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div id="equipment-1-border" class="character-detail-layout">-->
-<!--                    <div id="equipment-1-border-left">-->
-<!--                        <img id="equipment-1-image" style="width: 100%" class="layout">-->
-<!--                    </div>-->
-<!--                    <div id="equipment-1-border-right">-->
-<!--                        <p id="equipment-1-detail"> Trống </p>-->
-<!--                        <button type="button"> Gỡ</button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div id="equipment-2-border" class="character-detail-layout">-->
-<!--                    <div id="equipment-2-border-left">-->
-<!--                        <img id="equipment-2-image" src="../img/before-convert/items/Seething_Sorrow_item.webp"-->
-<!--                             style="width: 100%;height: 100%" class="layout">-->
-<!--                    </div>-->
-<!--                    <div id="equipment-2-border-right">-->
-<!--                        <p id="equipment-2-detail"> Ma kiếm </p>-->
-<!--                        <button type="button"> Gỡ</button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div id="main-bot-content-right" class="layout">-->
-<!--            <div id="inventory-and-enemy-border" class="layout">-->
-<!--                <div id="inventory-button" class="layout">-->
-<!--                    <img id="inventory-button-icon"-->
-<!--                         style="position: absolute; bottom: 0;left: 50%; transform: translateX(-50%);"-->
-<!--                         class="inventory-button">-->
-<!--                </div>-->
-<!--                <div id="enemy-button" class="layout">-->
-<!--                    <img id="enemy-button-icon"-->
-<!--                         style="position: absolute; bottom: 0;left: 50%; transform: translateX(-50%);"-->
-<!--                         class="enemy-button">-->
-<!--                </div>-->
-<!--                <div id="menu-button" class="layout">-->
-<!--                    <img id="menu-button-icon"-->
-<!--                         style="position: absolute; bottom: 0;left: 50%; transform: translateX(-50%);"-->
-<!--                         class="inventory-button">-->
-<!--                </div>-->
-<!--                <div id="inventory-detail" class="layout">-->
-<!--                    <div id="inventory-1" class="inventory-slot">-->
-<!--                        <img id="inventory-item-1" class="inventory-item"-->
-<!--                             src="../img/before-convert/items/Seething_Sorrow_item.webp">-->
-
-<!--                    </div>-->
-<!--                    <div id="inventory-2" class="inventory-slot">-->
-<!--                        <img id="inventory-item-2" class="inventory-item"-->
-<!--                             src="../img/before-convert/items/Seething_Sorrow_item.webp">-->
-<!--                    </div>-->
-<!--                    <div id="inventory-3" class="inventory-slot">-->
-<!--                        <img id="inventory-item-3" class="inventory-item">-->
-<!--                    </div>-->
-<!--                    <div id="inventory-4" class="inventory-slot">-->
-<!--                        <img id="inventory-item-4" class="inventory-item">-->
-<!--                    </div>-->
-<!--                    <div id="inventory-5" class="inventory-slot">-->
-<!--                        <img id="inventory-item-5" class="inventory-item">-->
-<!--                    </div>-->
-<!--                    <div id="inventory-6" class="inventory-slot">-->
-<!--                        <img id="inventory-item-6" class="inventory-item">-->
-<!--                    </div>-->
-<!--                    <div id="inventory-7" class="inventory-slot">-->
-<!--                        <img id="inventory-item-7" class="inventory-item">-->
-<!--                    </div>-->
-<!--                    <div id="inventory-8" class="inventory-slot">-->
-<!--                        <img id="inventory-item-8" class="inventory-item">-->
-<!--                    </div>-->
-<!--                    <div id="inventory-9" class="inventory-slot">-->
-<!--                        <img id="inventory-item-9" class="inventory-item">-->
-<!--                    </div>-->
-<!--                    <div id="inventory-10" class="inventory-slot">-->
-<!--                        <img id="inventory-item-10" class="inventory-item">-->
-<!--                    </div>-->
-<!--                    <div id="inventory-11" class="inventory-slot">-->
-<!--                        <img id="inventory-item-11" class="inventory-item">-->
-<!--                    </div>-->
-<!--                    <div id="inventory-12" class="inventory-slot">-->
-<!--                        <img id="inventory-item-12" class="inventory-item">-->
-<!--                    </div>-->
-<!--                    <div id="inventory-13" class="inventory-slot">-->
-<!--                        <img id="inventory-item-13" class="inventory-item">-->
-<!--                    </div>-->
-<!--                    <div id="inventory-14" class="inventory-slot">-->
-<!--                        <img id="inventory-item-14" class="inventory-item">-->
-<!--                    </div>-->
-<!--                    <div id="inventory-15" class="inventory-slot">-->
-<!--                        <img id="inventory-item-15" class="inventory-item">-->
-<!--                    </div>-->
-<!--                    <div id="inventory-16" class="inventory-slot">-->
-<!--                        <img id="inventory-item-16" class="inventory-item">-->
-<!--                    </div>-->
-<!--                    <div id="inventory-17" class="inventory-slot">-->
-<!--                        <img id="inventory-item-17" class="inventory-item">-->
-<!--                    </div>-->
-<!--                    <div id="inventory-18" class="inventory-slot">-->
-<!--                        <img id="inventory-item-18" class="inventory-item">-->
-<!--                    </div>-->
-<!--                    <div id="inventory-19" class="inventory-slot">-->
-<!--                        <img id="inventory-item-19" class="inventory-item">-->
-<!--                    </div>-->
-<!--                    <div id="inventory-20" class="inventory-slot">-->
-<!--                        <img id="inventory-item-20" class="inventory-item">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div id="log-border" class="layout">-->
-<!--                <div id="combat-result-button" class="layout"></div>-->
-<!--                <div id="combat-result-display" class="layout"></div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div id="main-bot-right" class="layout">-->
-<!--            &lt;!&ndash;            <img src="../img/before-convert/right-side-menu.jpg" style="width: 100%; height: 98%; object-fit: cover;">&ndash;&gt;-->
-<!--        </div>-->
     </div>
     <!--    Line-->
     <div class="line"></div>
     <!--    Footer-->
+    <footer class="endOfHTML">
+        <p>Powered by Hai Son </p>
+        <p>&copy; Hi im Son <nè></nè></p>
+                <img style="width: 100px; height: 100px" src="/css/frontDarkestDungeonfont/z4461508030673_f1be1a889287962d22dcc6f92ddadc63.jpg">
+    </footer>
 </div>
 
 <div class="skill-button"></div>
