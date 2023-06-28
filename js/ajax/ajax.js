@@ -1,7 +1,8 @@
-let gameSessionId;
+let user;
 let inventoryList = [];
 let itemInInventoryList = [];
 let itemPool = [];
+let currentSelectCharacter;
 
 let playerList = [];
 let playerDetailList = [];
@@ -37,7 +38,35 @@ let player2EquippingList = [];
 let player3EquippingList = [];
 let player4EquippingList = [];
 
+let char1Idle = "../img/character/grave-robber/gr-idle.gif";
+let char2Idle = "../img/character/vestal/vestal-idle.gif";
+let char3Idle = "../img/character/highwayman/hwm-idle.gif";
+let char4Idle = "../img/character/crusader/crusader-idle.gif";
+let charIdle = [char1Idle,char2Idle,char3Idle,char4Idle];
 
+let char1Combat = "../img/character/grave-robber/gr-combat.gif";
+let char2Combat = "../img/character/vestal/vestal-combat.gif";
+let char3Combat = "../img/character/highwayman/hwm-combat.gif";
+let char4Combat = "../img/character/crusader/crusader-combat.gif";
+let charCombat = [char1Combat,char2Combat,char3Combat,char4Combat];
+
+let char1Walk = "../img/character/grave-robber/gr-walk.gif";
+let char2Walk = "../img/character/vestal/vestal-walk.gif";
+let char3Walk = "../img/character/highwayman/hwm-walk.gif";
+let char4Walk = "../img/character/crusader/crusader-walk.gif";
+let charWalk = [char1Walk,char2Walk,char3Walk,char4Walk];
+
+let char1Attack = "../img/character/grave-robber/gr-attack.webp";
+let char2IAttack = "../img/character/vestal/vestal-attack.webp";
+let char3Attack = "../img/character/highwayman/hwm-attack.webp";
+let char4Attack = "../img/character/crusader/crusader-attack.webp";
+let charAttack = [char1Attack,char2IAttack,char3Attack,char4Attack];
+
+let char1Icon = "../img/character/grave-robber/gr-icon.png";
+let char2Icon = "../img/character/vestal/vestal-icon.png";
+let char3Icon = "../img/character/highwayman/hwm-icon.png";
+let char4Icon = "../img/character/crusader/crusader-icon.png";
+let charIcon = [char1Icon,char2Icon,char3Icon,char4Icon];
 
 let checkCharTurn = [];
 let isChar1Turn = true;
@@ -51,10 +80,17 @@ function getAllGameSession() {
         type: "GET",
         url: "http://localhost:8080/game-session",
         success(gameSession) {
-            console.log(gameSession)
         }
     });
-
+}
+function getAllGameSessionByUserId(userId) {
+    $.ajax({
+        type: "GET",
+        url: `http://localhost:8080/game-session/user/${userId}`,
+        success(data) {
+            gameSessionList = data;
+        }
+    });
 }
 
 //đang đợi tường viết font-end
@@ -70,13 +106,11 @@ function getAllPlayer() {
 
 
 function getAlivePlayer(gameSessionId) {
-    console.log("before run ajax")
     $.ajax({
         type: "GET",
         url: `http://localhost:8080/game-character/player-list-alive/${gameSessionId}`,
         success:function (data) {
             alivePlayerList = data;
-            console.log(alivePlayerList);
         }
     });
 }
@@ -88,7 +122,6 @@ function getDeadPlayer(gameSessionId) {
         url: `http://localhost:8080/game-character/player-list-dead/${gameSessionId}`,
         success:function (data) {
             deadPlayerList = data;
-            console.log(data);
         }
     });
 }
@@ -99,7 +132,6 @@ function getAllEnemy() {
         type: "GET",
         url: "http://localhost:8080/game-character/enemy-player",
         success(gameCharacter) {
-            console.log(gameCharacter)
         }
     })
 }
@@ -111,7 +143,6 @@ function getAliveEnemy(gameSessionId) {
         url: `http://localhost:8080/game-character/enemy-list-alive/${gameSessionId}`,
         success:function (data) {
             aliveEnemyList = data;
-            console.log(aliveEnemyList);
         }
     });
 }
@@ -123,7 +154,6 @@ function getDeadEnemy(gameSessionId) {
         url: `http://localhost:8080/game-character/enemy-list-dead/${gameSessionId}`,
         success:function (data) {
             deadEnemyList = data;
-            console.log(deadEnemyList);
         }
     });
 }
@@ -133,7 +163,6 @@ function getAllCharacterDetail() {
         type: "GET",
         url: "http://localhost:8080/character-detail",
         success(characterDetail) {
-            console.log(characterDetail)
         }
     })
 }
@@ -144,7 +173,6 @@ function getAliveCharacterDetail(gameSessionId) {
         url: `http://localhost:8080/character-detail/player-list-alive/${gameSessionId}`,
         success:function (data) {
             alivePlayerDetailList = data;
-            console.log(alivePlayerDetailList);
         }
     });
 }
@@ -155,7 +183,6 @@ function getDeadCharacterDetail(gameSessionId) {
         url: `http://localhost:8080/character-detail/player-list-dead/${gameSessionId}`,
         success:function (data) {
             deadPlayerDetailList = data;
-            console.log(deadPlayerDetailList);
         }
     });
 }
@@ -166,7 +193,6 @@ function getAliveEnemyDetail(gameSessionId){
         url: `http://localhost:8080/character-detail/enemy-list-alive/${gameSessionId}`,
         success:function (data) {
             aliveEnemyDetailList = data;
-            console.log(aliveEnemyDetailList);
         }
     });
 }
@@ -176,7 +202,6 @@ function getDeadEnemyDetail(gameSessionId){
         url: `http://localhost:8080/character-detail/enemy-list-dead/${gameSessionId}`,
         success:function (data) {
             deadEnemyDetailList = data;
-            console.log(deadEnemyDetailList);
         }
     });
 }
@@ -187,7 +212,6 @@ function getItemPool() {
         url:"http://localhost:8080/game-item",
         success(gameItem){
             itemPool = gameItem;
-            console.log(gameItem)
         }
 
     })
@@ -202,7 +226,6 @@ function getInventory(gameSessionId){
         url: `http://localhost:8080/inventory/game-session/${gameSessionId}`,
         success:function (data) {
             inventoryList = data;
-            console.log(inventoryList);
         }
     });
 }
@@ -212,7 +235,6 @@ function getItemInInventory(gameSessionId){
         url: `http://localhost:8080/game-item/game-session/${gameSessionId}`,
         success:function (data) {
             itemInInventoryList = data;
-            console.log(itemInInventoryList);
         }
     });
 }
@@ -221,7 +243,6 @@ function getAllCharacterItem() {
         type:"GET",
         url:"http://localhost:8080/session-character",
         success(characterItem){
-            console.log(characterItem)
         }
     })
 }
@@ -231,7 +252,6 @@ function getAliveCharacterItem() {
         type:"GET",
         url:"http://localhost:8080/live-session-character",
         success(characterItem){
-            console.log(characterItem)
         }
     })
 }
@@ -241,7 +261,6 @@ function getDeadCharacterItem() {
         type:"GET",
         url:"http://localhost:8080/live-session-character",
         success(characterItem){
-            console.log(characterItem)
         }
     })
 
@@ -256,7 +275,6 @@ function getAllInventory() {
         type:"GET",
         url:"http://localhost:8080/inventory",
         success(inventory){
-            console.log(inventory)
         }
     })
 }
@@ -267,7 +285,6 @@ function getSkillOfAliveCharacter() {
         type:"GET",
         url:"http://localhost:8080/character-alive",
         success(aliveCharacter){
-            console.log(aliveCharacter)
         }
     })
 }
@@ -277,11 +294,19 @@ function getSkillOfAliveEnemy() {
         type:"GET",
         url:"http://localhost:8080/skill",
         success(skillAlive){
-            console.log(skillAlive)
         }
     })
 }
 
+function addItemToInventory(){
+    $.ajax({
+        type:"POST",
+        url:"http://localhost:8080/inventory",
+        success(data){
+
+        }
+    })
+}
 
 
 

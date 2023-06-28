@@ -145,7 +145,7 @@
                     <p style="color: wheat"> Công nghiện / Hp: ?/? ///// Mp: ?/?</p>
                 </div>
                 <div id="character-detail" class="layout">
-                    <p style="color: wheat"> Str: , Int: ,...</p>
+                    <p id="character-detail-content" style="color: wheat"> Str: , Int: ,...</p>
                 </div>
             </div>
             <div id="character-misc" class="layout">
@@ -297,7 +297,17 @@
     <!--    Line-->
     <div class="line"></div>
     <!--    Footer-->
-    <div class="footer"></div>
+    <div class="footer" style="background-color: black">
+        <footer class="endOfHTML">
+            <p>&copy; Powered by Group 1 </p>
+            <p>- Codegym 0223G1 -
+            </p>
+            <!--        <img style="width: 30px; height: 30px" src="/css/frontDarkestDungeonfont/z4461508030673_f1be1a889287962d22dcc6f92ddadc63.jpg">-->
+        </footer>
+        <button onclick="loadGameIdle(9)">Load game Idle</button>
+        <button onclick="loadGameTravel(9)">Load game Travel</button>
+        <button onclick="loadGameCombat(9)">ReLoad Combat</button>
+    </div>
 </div>
 
 <div class="skill-button"></div>
@@ -306,10 +316,8 @@
 </body>
 
 
-
-<script src="../js/ajax/preview-display-method.js"></script>
 <script src="../js/ajax/ajax.js"></script>
+<script src="../js/ajax/preview-display-method.js"></script>
 <script src="../js/ajax/game-logic.js"></script>
-<button onclick="loadGame(9)">Load game</button>
 
 </html>

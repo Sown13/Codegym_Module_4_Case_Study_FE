@@ -29,7 +29,7 @@ body {
     height: 300px;
     border: 10px black;
     background-image: url("../../img/gif/background_forest.gif");
-    /*animation: moveBackground 20s linear infinite;*/
+    animation: moveBackground 15s linear infinite;
 }
 /*@keyframes moveBackground {*/
 /*    from { background-position: 0 0; }*/

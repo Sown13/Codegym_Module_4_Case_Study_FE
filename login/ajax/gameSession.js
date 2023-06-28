@@ -22,17 +22,19 @@ function changePageInGameSession() {
     xhttp.send();
 }
 
-let i = 1
+let gameSessionList = [];
 
-function inputMoreGameToPlay() {
-    if (i === 4) {
+
+function createNewGameToPlay() {
+    if (gameSessionList.length === 4) {
     } else {
-        let context = document.getElementById("input-game").innerHTML
+        loadGameSessionPage();
+        let context = document.getElementById("input-game").innerHTML;
         context += ` <div id="inputGame">
             <div class="form-group">
-            <label for="email" style="color: white">Game ${i++}</label>
+            <label for="email" style="color: white">Game ${gameSessionList.length+1}</label>
             <div class="input-button-wrapper">
-            <input type="text" class="form-control" id="email">
+            <button type="text" class="form-control" id="email" style="width: 100%" onclick="playGame(gameSessionList)">Chơi</button>
             <button type="button" onclick="deleteDemo()" class="delete-game-button" data-index="1">Delete</button>
             </div>
             </div>
@@ -42,6 +44,23 @@ function inputMoreGameToPlay() {
     }
 }
 
+function loadGameSessionPage(){
+    let context = document.getElementById("input-game").innerHTML
+    for (let i = 0; i < gameSessionList.length; i++) {
+        context += ` <div id="inputGame">
+            <div class="form-group">
+            <label for="email" style="color: white">Game ${gameSessionList.length+1}</label>
+            <div class="input-button-wrapper">
+            <button type="text" class="form-control" id="email" style="width: 100%" onclick="playGame(gameSessionList[i].gameSessionId)">Chơi</button>
+            <button type="button" onclick="deleteDemo()" class="delete-game-button" data-index="1">Delete</button>
+            </div>
+            </div>
+            </div>`
+    }
+    document.getElementById("input-game").innerHTML = context
+}
+loadGameSessionPage();
+console.log(gameSessionList);
 
 
 
