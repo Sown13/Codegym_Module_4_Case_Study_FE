@@ -16,7 +16,8 @@
 <div class="border-screen">
     <!-- Header -->
     <div class="header">
-        <img src="../../img/before-convert/header-banner.jpg" style="position: absolute; bottom: 0;left: 50%; transform: translateX(-50%);">
+        <img src="../../img/before-convert/header-banner.jpg"
+             style="position: absolute; bottom: 0;left: 50%; transform: translateX(-50%);">
     </div>
 
     <!-- Line -->
@@ -33,17 +34,26 @@
             </div>
             <div id="mid-avatar" class="layout">
                 <div id="char-4" class="layout">
-                    <img id="char-4-inside" style="position: absolute; bottom: 0;left: 50%; transform: translateX(-50%);" class="character">
+                    <img id="char-4-inside"
+                         style="position: absolute; bottom: 0;left: 50%; transform: translateX(-50%);"
+                         class="character">
                 </div>
                 <div id="enemy-left-space" class="layout">
-                    <img id="character-action" style="position: absolute; bottom: 0;left: 50%; transform: translateX(-50%);" class="character">
+                    <img id="character-action"
+                         style="position: absolute; bottom: 0;left: 50%; transform: translateX(-50%);"
+                         class="character">
                 </div>
-                <div id="enemy" class="layout" >
+                <div id="enemy" class="layout">
                     <div class="col-md-6">
                         <div class="box-for overflow">
-                            <div style="position: absolute; bottom: 40% ;left: 50%; transform: translateX(-50%);" class="character">
-                                <h2 style="color: white">Login:</h2>
-                               <div class="form-group">
+                            <div style="position: absolute; bottom: 20% ;left: 50%; transform: translateX(-50%);"
+                                 class="character">
+                                <h2 style="color: white" class="form-group">Login:</h2>
+                                <div class="form-group">
+                                    <label for="username" style="color: white">User Name</label>
+                                    <input type="text" class="form-control" id="username">
+                                </div>
+                                <div class="form-group">
                                     <label for="email" style="color: white">Email</label>
                                     <input type="text" class="form-control" id="email">
                                 </div>
@@ -51,8 +61,12 @@
                                     <label for="password" style="color: white">Password</label>
                                     <input type="password" class="form-control" id="password">
                                 </div>
+                                <div class="form-group">
+                                    <label for="rewritePassword" style="color: white">Rewrite Password</label>
+                                    <input type="password" class="form-control" id="rewritePassword">
+                                </div>
                                 <div class="text-center">
-                                    <button class="btn btn-default" onclick="login()">Log in</button>
+                                    <button class="btn btn-default" onclick="register()">Register</button>
                                 </div>
                             </div>
                         </div>
@@ -96,10 +110,9 @@
 <div class="skill-button"></div>
 
 <script src="../../js/class/main_entity/class-game-character.js"></script>
-<!--<script src="../../js/ajax/preview-display-method.js"></script>-->
+<script src="../../js/ajax/preview-display-method.js"></script>
 <script src="../../js/ajax/ajax.js"></script>
 </body>
 
 </html>
-<script src="/login/ajax/gameSession.js"></script>
 <script src="/login/ajax/ajax.js"></script>
