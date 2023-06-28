@@ -1,39 +1,40 @@
 let user
 
 function register() {
-    let username = $('#username').val()
+    let userFullName = $('#userFullName').val()
     let email = $('#email').val()
-    let password = $('#password').val()
+    let accountPassword = $('#accountPassword').val()
     let rewritePassword = $('#rewritePassword').val()
-    if (email === "" || password === "" || rewritePassword === "") {
+    if (email === "" || accountPassword === "" || rewritePassword === "") {
         alert("Fill all the the form before register")
         event.preventDefault()
-    } else if (username.length < 6 || username.length > 32) {
+    } else if (userFullName.length < 6 || userFullName.length > 32) {
         alert("User name have only 6 to 32 letters")
         event.preventDefault()
     } else if (email.length < 6 || email > 32) {
         alert("email have only 6 to 32 letters")
         event.preventDefault()
-    } else if (password.length > 8 || password.length < 6) {
-        alert("Password have only 6 to 8 letters")
+    } else if (accountPassword.length > 8 || accountPassword.length < 6) {
+        alert("accountPassword have only 6 to 8 letters")
         event.preventDefault()
-    } else if (password !== rewritePassword) {
+    } else if (accountPassword !== rewritePassword) {
         alert("Invalid rewritepassword")
         event.preventDefault()
     } else {
         let newUser = {
-            username: username,
+            userFullName: userFullName,
             email: email,
-            password: password
+            accountPassword: accountPassword
         };
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/user/register",
+            url: "http://localhost:8080/user-entity/register",
             contentType: 'application/json',
             data: JSON.stringify(newUser),
             success() {
                 console.log(newUser)
                 alert("Register Successfully")
+
             }
         });
         event.preventDefault()
@@ -45,18 +46,19 @@ function register() {
 function login() {
     let userLogin
     let email = $('#email').val()
-    let password = $('#password').val()
+    let accountPassword = $('#accountPassword').val()
     let newUser = {
         email: email,
-        password: password
+        accountPassword: accountPassword
     };
+    console.log(newUser)
     $.ajax({
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
         type: "POST",
-        url: "http://localhost:8080/user/login",
+        url: "http://localhost:8080/user-entity/login",
         contentType: 'application/json',
         data: JSON.stringify(newUser),
         success(data) {
@@ -98,4 +100,16 @@ function renameURL() {
 
     // Kiểm tra URL mới
     console.log(window.location.href);
+}
+
+function changePageInRegister() {
+    var url = "trang-chu.html"; // Đường dẫn đến trang mới
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+            window.location.href = url; // Chuyển đến trang mới
+        }
+    };
+    xhttp.open("GET", url, true);
+    xhttp.send();
 }
