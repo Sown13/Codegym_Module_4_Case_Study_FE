@@ -31,5 +31,5 @@ class SessionCharacter {
 
 }
 
-let testObj = new SessionCharacter(1,new GameSession(1,"a",1,new UserEntity(1,"a","1","1","1","1","1",true),"a",1),new GameCharacter(1,"didi",2,2,"a",1,1,1,1,1,1,"1",true,true));
-console.log(testObj)
+// let testObj = new SessionCharacter(1,new GameSession(1,"a",1,new UserEntity(1,"a","1","1","1","1","1",true),"a",1),new GameCharacter(1,"didi",2,2,"a",1,1,1,1,1,1,"1",true,true));
+// console.log(testObj)

@@ -38,4 +38,4 @@ class Inventory {
         this._inventoryImage = value;
     }
 }
-let inventory=new Inventory(1,new GameSession(1,"son",1200,new UserEntity(1,"Son","a","123","1","12321","a",true)),new GameItem(1,"Son",1,2,1,2,1,2,"1"),"a");
+// let inventory=new Inventory(1,new GameSession(1,"son",1200,new UserEntity(1,"Son","a","123","1","12321","a",true)),new GameItem(1,"Son",1,2,1,2,1,2,"1"),"a");

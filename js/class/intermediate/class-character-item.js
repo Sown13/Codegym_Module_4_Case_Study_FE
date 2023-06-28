@@ -1,4 +1,4 @@
-class ClassCharacterItem {
+class CharacterItem {
     constructor(characterItemId, gameItem,gameCharacter) {
         this._characterItemId=characterItemId;
         this._gameItem= gameItem;
