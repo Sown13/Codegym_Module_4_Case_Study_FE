@@ -11,8 +11,8 @@ function register() {
     } else if (userFullName.length < 6 || userFullName.length > 32) {
         alert("User name have only 6 to 32 letters")
         event.preventDefault()
-    } else if (accountName.length < 6 || accountName > 32) {
-        alert("accountName have only 6 to 32 letters")
+    } else if (accountName.length < 4 || accountName > 32) {
+        alert("accountName have only 4 to 32 letters")
         event.preventDefault()
     } else if (accountPassword.length > 8 || accountPassword.length < 6) {
         alert("accountPassword have only 6 to 8 letters")
@@ -34,7 +34,7 @@ function register() {
             success() {
                 console.log(newUser)
                 alert("Register Successfully")
-
+                changePage("loginForm.html")
             }
         });
         event.preventDefault()
@@ -63,7 +63,8 @@ function login() {
         success(data) {
             userLogin = data.user1234567890;
             console.log(userLogin)
-            localStorage.setItem("idUser", userLogin.id)
+            console.log(userLogin.userId)
+            localStorage.setItem("id", userLogin.userId)
             // localStorage.setItem("nameUser", userLogin.username)
             localStorage.setItem("accountName", userLogin.accountName)
             alert("Login Successfully")
@@ -76,7 +77,7 @@ function login() {
             alert("Wrong account or password ")
         }
     });
-
+return userLogin.userId
 }
 
 // console.log(user_id)

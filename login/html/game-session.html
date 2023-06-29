@@ -41,13 +41,17 @@
     </style>
 
     <link rel="stylesheet" href="../../css/mycss/layout.css">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../../css/mycss/footer.css">
 </head>
 <body>
 <div class="border-screen">
     <!-- Header -->
     <div class="header">
-        <button style="position: absolute; bottom: 74%;left: 6%; transform: translateX(-80%); width: 60px; height: 35px" onclick="changePageInGameSession()">Đăng xuất</button>
+        <button style="position: absolute; bottom: 74%;left: 6%; transform: translateX(-80%); width: 60px; height: 35px"
+                onclick="changePageInGameSession()">Đăng xuất
+        </button>
         <img src="../../img/before-convert/header-banner.jpg"
              style="position: absolute; bottom: 0;left: 50%; transform: translateX(-50%);">
     </div>
@@ -76,23 +80,20 @@
                 <div class="layout">
                     <div class="col-md-12">
                         <div class="box-for overflow">
-                            <button class="add-game-button" onclick="createNewGameToPlay()" style="font-size: 20px;width: 300px;height: 30px;background-color: #6c757d">Game mới</button>
+<!--                            onclick="createNewGameToPlay()"-->
+                            <button class="add-game-button" onclick=""
+                                    style="font-size: 20px;width: 300px;height: 30px;background-color: #6c757d">Danh sách game
+                            </button>
                             <div class="input-game-wrapper">
-                                <div class="input-game" id="input-game">
-<!--                                    <label for="game-input" style="color: white">Game 1</label>-->
-<!--                                    <div class="input-button-wrapper">-->
-<!--                                        <input type="text" class="form-control" id="game-input">-->
-<!--                                        <button type="button" class="delete-game-button">Delete</button>-->
-<!--                                    </div>-->
-                                </div>
+                                <div class="input-game" id="input-game"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-<!--                <div id="enemy-right-space" class="layout">-->
-<!--                    <div id="item-popup-1" class="popup">This is the popup content.</div>-->
-<!--                    <div id="item-popup-2" class="popup">This is the popup content 2.</div>-->
-<!--                </div>-->
+                <!--                <div id="enemy-right-space" class="layout">-->
+                <!--                    <div id="item-popup-1" class="popup">This is the popup content.</div>-->
+                <!--                    <div id="item-popup-2" class="popup">This is the popup content 2.</div>-->
+                <!--                </div>-->
             </div>
             <div id="bot-condition" class="layout">
                 <div id="char-1-condition" class="status-layout"></div>
@@ -118,8 +119,9 @@
     <div class="line"></div>
     <!-- Footer -->
     <footer class="endOfHTML">
-        <p>&copy; Powered by Group 1  </p>
-        <p>- Codegym 0223G1 - <nè></nè></p>
+        <p>&copy; Powered by Group 1 </p>
+        <p>- Codegym 0223G1 -
+        </p>
         <!--        <img style="width: 30px; height: 30px" src="/css/frontDarkestDungeonfont/z4461508030673_f1be1a889287962d22dcc6f92ddadc63.jpg">-->
     </footer>
 </div>
