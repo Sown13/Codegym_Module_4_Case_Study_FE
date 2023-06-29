@@ -27,6 +27,7 @@ function setCurrentSelect(characterId, index) {
     currentSelectCharacter = characterId;
     currentCharacterIndex = index;
     console.log(currentSelectCharacter);
+    console.log(currentCharacterIndex);
 }
 
 let char1Src = '../img/gif/gun-man.gif';
@@ -78,14 +79,35 @@ let enemyDefend1 = '../img/before-convert/hag-defend.webp';
 let audioElement = new Audio('../audio/crusader-attack-2.wav');
 
 
+// function displayCharacterAction(characterIndex, characterActionSrc) {
+//     audioElement.play();
+//     removeIcon(`char-${characterIndex}-inside`);
+//     displayIcon('character-action', characterActionSrc);
+//     removeIcon('enemy-inside');
+//     displayIcon('enemy-inside', enemyDefend1);
+//     setTimeout(function () {
+//         displayIcon('char-3-inside', char3Src);
+//     }, 700);
+//     setTimeout(function () {
+//         removeIcon('character-action');
+//     }, 700);
+//     setTimeout(function () {
+//         removeIcon('enemy-inside');
+//     }, 700);
+//     setTimeout(function () {
+//         displayIcon('enemy-inside', enemySrc)
+//     }, 700);
+// }
+
+
 function displayCharacterAction(characterIndex, characterActionSrc) {
     audioElement.play();
-    removeIcon(`char-${characterIndex}-inside`);
+    removeIcon(`char-${characterIndex+1}-inside`);
     displayIcon('character-action', characterActionSrc);
     removeIcon('enemy-inside');
     displayIcon('enemy-inside', enemyDefend1);
     setTimeout(function () {
-        displayIcon('char-3-inside', char3Src);
+        displayIcon(`char-${characterIndex+1}-inside`, charCombat[characterIndex]);
     }, 700);
     setTimeout(function () {
         removeIcon('character-action');
@@ -96,6 +118,10 @@ function displayCharacterAction(characterIndex, characterActionSrc) {
     setTimeout(function () {
         displayIcon('enemy-inside', enemySrc)
     }, 700);
+    setTimeout(function () {
+        displayAllAlivePlayer(alivePlayerDetailList,charCombat)
+    },700)
+
 }
 
 
@@ -119,7 +145,7 @@ function findCharacterIndex(characterId, alivePlayerList) {
         }
     }
 }
-
+// displayCharacterAction(3,charAttack[3]);
 function showCharacterInfo(characterId) {
     $.ajax({
         type: "GET",
@@ -149,17 +175,13 @@ function showCharacterInfo(characterId) {
         </div>
         <div id="character-misc" class="layout">
             <div id="skill-border" class="layout">`
-            let skillList = [];
-            getSkillByCharacterAndGameSession(9,currentSelectCharacter).then(skillList=>{
-                console.log(skillList);
-                for (let i = 1; i < skillList; i++) {
+                for (let i = 0; i < 5; i++) {
+                    console.log(cheatingSkill);
                     context += `<div id="skill-${i}" class="button-effect">
-                    <img id="skill-1-image" src="../img/skill/skill-2.webp" style="width: 100%"
-                         class="skill-button">
-                </div>`
+                    <img id="skill-1-image" src="${cheatingSkill[i]}" style="width: 100%" 
+                    class="skill-button">
+                                </div>`
                 }
-            });
-
 
                 // `<div id="skill-2" class="button-effect">
                 //     <img id="skill-2-image" src="../img/skill/skill-3.webp" style="width: 100%"
@@ -185,7 +207,8 @@ function showCharacterInfo(characterId) {
                 <div id="skill-detail-right">
                     <button type="button"> Cộng điểm</button>
                     <button type="button"> Sử dụng</button>
-                    <button type="button" onClick="displayCharacterAction(3,characterAction3)"> Đánh thường</button>
+                    <button type="button" onClick="displayCharacterAction(${currentCharacterIndex},'${charAttack[currentCharacterIndex]}')"> Đánh thường</button>
+         
                     <p id="skill-detail-describe">Nộ long cước , Skill level, type: vật lý, sát thương: 10,mana:
                         0</p>
                 </div>
@@ -215,9 +238,18 @@ function showCharacterInfo(characterId) {
     });
 }
 
-function equip(characterId, ItemId) {
+
+function displaySkillDetail(skillIndex,characterIndex){
 
 }
+
+// function equip(inventoryId,gameSessionId,characterId, ItemId) {
+//     characterItemTemp = findCharacterItemByCharacterId(characterId);
+//
+//     equipItemForCharacter();
+//     removeItemFromInventory();
+//
+// }
 
 function replacePopupItem(divElementId, itemDescription) {
     let divElement = document.getElementById(divElementId);
@@ -238,7 +270,7 @@ function displayInventory(inventory, itemInInventoryList) {
             replacePopupItem(`item-popup-${i + 1}`, itemDescription[i]);
             displayIcon(`inventory-item-${i + 1}`, itemInInventoryList[i].itemImage);
             popupItemDetail(i + 1, i + 1);
-            document.getElementById(`inventory-item-${i + 1}`).addEventListener('click', equip(currentSelectCharacter, itemInInventoryList[i].itemId));
+            // document.getElementById(`inventory-item-${i + 1}`).addEventListener('click', equip(currentSelectCharacter, itemInInventoryList[i].itemId));
         }
     }
 }

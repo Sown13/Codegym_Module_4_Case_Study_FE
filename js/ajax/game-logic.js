@@ -1,4 +1,5 @@
 function loadGameIdle(gameSessionId){
+    // getSkillByCharacterAndGameSession(9,40);
     getAlivePlayer(gameSessionId);
     getDeadPlayer(gameSessionId);
     getAliveEnemy(gameSessionId);
@@ -26,6 +27,7 @@ function loadGameIdle(gameSessionId){
 
 
 function loadGameTravel(gameSessionId){
+    // getSkillByCharacterAndGameSession(9,40);
     getAlivePlayer(gameSessionId);
     getDeadPlayer(gameSessionId);
     getAliveEnemy(gameSessionId);
@@ -50,6 +52,7 @@ function loadGameTravel(gameSessionId){
 }
 
 function loadGameCombat(gameSessionId){
+    // getSkillByCharacterAndGameSession(9,40);
     getAlivePlayer(gameSessionId);
     getDeadPlayer(gameSessionId);
     getAliveEnemy(gameSessionId);

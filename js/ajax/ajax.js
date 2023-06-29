@@ -4,6 +4,9 @@ let itemInInventoryList = [];
 let itemPool = [];
 let currentSelectCharacter;
 let currentCharacterIndex;
+let currentSelectCharacterItem;
+let currentSelectItem;
+let characterItemTemp = [];
 
 let playerList = [];
 let playerDetailList = [];
@@ -27,7 +30,11 @@ let player1SkillList = [];
 let player2SkillList = [];
 let player3SkillList = [];
 let player4SkillList = [];
-
+let playerSkillList = [];
+let tempSkillList = [];
+getSkillByCharacterAndGameSession(9,39);
+console.log(tempSkillList);
+let cheatingSkill = ["../img/skill/skill-2.webp","../img/skill/skill-3.webp","../img/skill/skill-4.webp","../img/skill/skill-5.webp","../img/skill/skill-6.webp"]
 let enemy1SkillList = [];
 let enemy2SkillList = [];
 let enemy3SkillList = [];
@@ -58,10 +65,10 @@ let char4Walk = "../img/character/crusader/crusader-walk.gif";
 let charWalk = [char1Walk,char2Walk,char3Walk,char4Walk];
 
 let char1Attack = "../img/character/grave-robber/gr-attack.webp";
-let char2IAttack = "../img/character/vestal/vestal-attack.webp";
+let char2Attack = "../img/character/vestal/vestal-attack.webp";
 let char3Attack = "../img/character/highwayman/hwm-attack.webp";
 let char4Attack = "../img/character/crusader/crusader-attack.webp";
-let charAttack = [char1Attack,char2IAttack,char3Attack,char4Attack];
+let charAttack = [char1Attack,char2Attack,char3Attack,char4Attack];
 
 let char1Icon = "../img/character/grave-robber/gr-icon.png";
 let char2Icon = "../img/character/vestal/vestal-icon.png";
@@ -282,19 +289,16 @@ function getAllInventory() {
 
 // ------------------------------------------------
 function getSkillByCharacterAndGameSession(gameSessionId,characterId) {
-    return new Promise((resolve, reject) => {
+    // return new Promise((resolve, reject) => {
         $.ajax({
             type:"GET",
             url:`http://localhost:8080/skill/game-session/${gameSessionId}/game-character/${characterId}`,
             success(data) {
-                resolve(data);
-            },
-            error(jqXHR, textStatus, errorThrown) {
-                reject(errorThrown);
+                tempSkillList = data;
             }
-        })
-    })
-}
+        })}
+    // )
+// }
 
 function getSkillOfAliveEnemy() {
    return new Promise((resolve, reject) => {
@@ -312,17 +316,147 @@ function getSkillOfAliveEnemy() {
 
 }
 
-function addItemToInventory(){
-    $.ajax({
-        type:"POST",
-        url:"http://localhost:8080/inventory",
-        success(data){
-
-        }
-    })
-}
-
-
+// function addItemIntoInventory(inventoryId,gameSessionId,itemId){
+//     let gameSession;
+//     let gameItem;
+//     $.ajax({
+//         type:"GET",
+//         url:`http://localhost:8080/game-item/${itemId}`,
+//         success(data){
+//             gameItem = data;
+//         }
+//     });
+//     $.ajax({
+//         type:"GET",
+//         url:`http://localhost:8080/game-session/${gameSessionId}`,
+//         success(data){
+//             gameSession = data;
+//         }
+//     });
+//
+//     let inventory = new Inventory(inventoryId,gameSession,gameItem,gameItem.itemImage)
+//     $.ajax({
+//         headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json',
+//         },
+//         type: "PUT",
+//         url: "http://localhost:8080/inventory/" + inventoryId,
+//         data: JSON.stringify(inventory),
+//         success() {
+//             loadGameIdle(gameSessionId);
+//         }
+//     });
+//     event.defaultPrevented;
+// }
+//
+// function removeItemFromInventory(inventoryId,gameSessionId){
+//     let gameSession;
+//     $.ajax({
+//         type:"GET",
+//         url:`http://localhost:8080/game-session/${gameSessionId}`,
+//         success(data){
+//             gameSession = data;
+//         }
+//     });
+//     let inventory = new Inventory(inventoryId,gameSession,null,null)
+//     $.ajax({
+//         headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json',
+//         },
+//         type: "PUT",
+//         url: "http://localhost:8080/inventory/" + inventoryId,
+//         data: JSON.stringify(inventory),
+//         success() {
+//             loadGameIdle(gameSessionId);
+//         }
+//     });
+//     event.defaultPrevented;
+// }
+//
+// function equipItemForCharacter(characterItemId,characterId,itemId){
+//     let character ;
+//     let item;
+//     $.ajax({
+//         type: "GET",
+//         url: `http://localhost:8080/game-character/${characterId}`,
+//         success:function (data) {
+//             character = data;
+//         }
+//     });
+//     $.ajax({
+//         type: "GET",
+//         url: `http://localhost:8080/game-item/${itemId}`,
+//         success:function (data) {
+//             item = data;
+//         }
+//     });
+//
+//     let characterItem = new CharacterItem(characterItemId,item,character);
+//     $.ajax({
+//         headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json',
+//         },
+//         type: "PUT",
+//         url: "http://localhost:8080/character-item/" + characterItemId,
+//         data: JSON.stringify(characterItem),
+//         success() {
+//             loadGameIdle(gameSessionId);
+//         }
+//     });
+//     event.defaultPrevented;
+// }
+//
+// function removeItemFromCharacter(characterItemId,characterId){
+//     let character ;
+//     $.ajax({
+//         type: "GET",
+//         url: `http://localhost:8080/game-character/${characterId}`,
+//         success:function (data) {
+//             character = data;
+//         }
+//     });
+//
+//     let characterItem = new CharacterItem(characterItemId,null,character);
+//     $.ajax({
+//         headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json',
+//         },
+//         type: "PUT",
+//         url: "http://localhost:8080/character-item/" + characterItemId,
+//         data: JSON.stringify(characterItem),
+//         success() {
+//             loadGameIdle(gameSessionId);
+//         }
+//     });
+//     event.defaultPrevented;
+// }
+//
+// function findCharacterItemByCharacterId(characterId){
+//     $.ajax({
+//         type: "GET",
+//         url: `http://localhost:8080/character-item/game-character/${characterId}`,
+//         success(data) {
+//             characterItemTemp = data;
+//             return characterItemTemp;
+//         }
+//     });
+// }
+//
+// function findItemByCharacterItem(characterItemId){
+//
+//     $.ajax({
+//         type: "GET",
+//         url: `http://localhost:8080/game-item/character-item/${characterItemId}`,
+//         success(data) {
+//             currentSelectItem = data;
+//             return currentSelectItem;
+//         }
+//     });
+// }
 
 
 
