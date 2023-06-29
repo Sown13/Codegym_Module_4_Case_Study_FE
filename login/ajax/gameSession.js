@@ -1,13 +1,13 @@
-function showNameUser(email_user) {
+function showNameUser(accountName) {
     let context = ``
     context += `<div class="skill-button">
-    <a class="login-button">${email_user}</a>
+    <a class="login-button">Welcome : ${accountName}</a>
 </div>`
 
     document.getElementById("information").innerHTML = context;
 }
 
-showNameUser(localStorage.getItem("emailUser"))
+showNameUser(localStorage.getItem("accountName"))
 
 function changePageInGameSession() {
     localStorage.setItem("emailUser", null)

@@ -2,17 +2,17 @@
 
 function register() {
     let userFullName = $('#userFullName').val()
-    let email = $('#email').val()
+    let accountName = $('#accountName').val()
     let accountPassword = $('#accountPassword').val()
     let rewritePassword = $('#rewritePassword').val()
-    if (email === "" || accountPassword === "" || rewritePassword === "") {
+    if (accountName === "" || accountPassword === "" || rewritePassword === "") {
         alert("Fill all the the form before register")
         event.preventDefault()
     } else if (userFullName.length < 6 || userFullName.length > 32) {
         alert("User name have only 6 to 32 letters")
         event.preventDefault()
-    } else if (email.length < 6 || email > 32) {
-        alert("email have only 6 to 32 letters")
+    } else if (accountName.length < 6 || accountName > 32) {
+        alert("accountName have only 6 to 32 letters")
         event.preventDefault()
     } else if (accountPassword.length > 8 || accountPassword.length < 6) {
         alert("accountPassword have only 6 to 8 letters")
@@ -23,7 +23,7 @@ function register() {
     } else {
         let newUser = {
             userFullName: userFullName,
-            email: email,
+            accountName: accountName,
             accountPassword: accountPassword
         };
         $.ajax({
@@ -44,10 +44,10 @@ function register() {
 
 function login() {
     let userLogin
-    let email = $('#email').val()
+    let accountName = $('#accountName').val()
     let accountPassword = $('#accountPassword').val()
     let newUser = {
-        email: email,
+        accountName: accountName,
         accountPassword: accountPassword
     };
     console.log(newUser)
@@ -65,7 +65,7 @@ function login() {
             console.log(userLogin)
             localStorage.setItem("idUser", userLogin.id)
             // localStorage.setItem("nameUser", userLogin.username)
-            localStorage.setItem("emailUser", userLogin.email)
+            localStorage.setItem("accountName", userLogin.accountName)
             alert("Login Successfully")
             changePage("game-session.html");
             user = userLogin;
@@ -73,7 +73,7 @@ function login() {
             getAllGameSessionByUserId(user.userId);
         },
         error() {
-            alert("bug")
+            alert("Wrong account or password ")
         }
     });
 
