@@ -9,19 +9,23 @@ function displayIcon(divElementId, imgElementSrc) {
     imgElement.style.cssFloat = divElement.style.cssFloat;
     divElement.parentNode.replaceChild(imgElement, divElement);
 }
-function displayAllAlivePlayer(alivePlayerDetailList,charIconSrcList){
+
+function displayAllAlivePlayer(alivePlayerDetailList, charIconSrcList) {
     for (let i = 0; i < alivePlayerDetailList.length; i++) {
-        displayIcon(`char-${i+1}-inside`,charIconSrcList[i]);
+        displayIcon(`char-${i + 1}-inside`, charIconSrcList[i]);
         let characterId = alivePlayerDetailList[i].gameCharacter.characterId;
-        document.getElementById(`char-${i+1}-inside`).addEventListener("click",() =>setCurrentSelect(characterId));
-        document.getElementById(`char-${i+1}-inside`).addEventListener("click",() =>showCharacterInfo(characterId));
+        document.getElementById(`char-${i + 1}-inside`).addEventListener("click", () => setCurrentSelect(characterId, i));
+        document.getElementById(`char-${i + 1}-inside`).addEventListener("click", () => showCharacterInfo(characterId));
     }
 }
+
 // displayIcon("character-avatar",charIcon[2])
 // displayIcon(`character-avatar`, `../img/before-convert/crusader-avatar.png`)
 displayIcon(`skill-detail-left`, `../img/skill/skill-2.webp`)
-function setCurrentSelect(characterId){
+
+function setCurrentSelect(characterId, index) {
     currentSelectCharacter = characterId;
+    currentCharacterIndex = index;
     console.log(currentSelectCharacter);
 }
 
@@ -73,6 +77,7 @@ let characterAction3 = '../img/before-convert/crusader-attack.webp';
 let enemyDefend1 = '../img/before-convert/hag-defend.webp';
 let audioElement = new Audio('../audio/crusader-attack-2.wav');
 
+
 function displayCharacterAction(characterIndex, characterActionSrc) {
     audioElement.play();
     removeIcon(`char-${characterIndex}-inside`);
@@ -94,7 +99,6 @@ function displayCharacterAction(characterIndex, characterActionSrc) {
 }
 
 
-
 let itemDescription = [];
 
 function describeItem(itemInInventoryList) {
@@ -104,21 +108,23 @@ function describeItem(itemInInventoryList) {
             + itemInInventoryList[i].itemInt + "]" + "<br>" + "[Mind:" + itemInInventoryList[i].itemMind + "]" + "<br>" + "[Vit:" + itemInInventoryList[i].itemVit + "]");
     }
 }
-function findCharacterIndex(characterId,alivePlayerList){
-   let index = 0;
+
+function findCharacterIndex(characterId, alivePlayerList) {
+    let index = 0;
     for (let i = 0; i < alivePlayerList; i++) {
-        if (characterId == alivePlayerList[i].characterId){
+        if (characterId == alivePlayerList[i].characterId) {
             console.log(index);
             index = i;
             return index;
         }
     }
 }
+
 function showCharacterInfo(characterId) {
     $.ajax({
         type: "GET",
         url: `http://localhost:8080/character-detail/game-character/${characterId}`,
-        success:function (data) {
+        success: function (data) {
             selectingCharacter = data;
             let context = "";
             context +=
@@ -142,28 +148,36 @@ function showCharacterInfo(characterId) {
             </div>
         </div>
         <div id="character-misc" class="layout">
-            <div id="skill-border" class="layout">
-                <div id="skill-1" class="button-effect">
+            <div id="skill-border" class="layout">`
+            let skillList = [];
+            getSkillByCharacterAndGameSession(9,currentSelectCharacter).then(skillList=>{
+                console.log(skillList);
+                for (let i = 1; i < skillList; i++) {
+                    context += `<div id="skill-${i}" class="button-effect">
                     <img id="skill-1-image" src="../img/skill/skill-2.webp" style="width: 100%"
                          class="skill-button">
-                </div>
-                <div id="skill-2" class="button-effect">
-                    <img id="skill-2-image" src="../img/skill/skill-3.webp" style="width: 100%"
-                         class="skill-button">
-                </div>
-                <div id="skill-3" class="button-effect">
-                    <img id="skill-3-image" src="../img/skill/skill-4.webp" style="width: 100%"
-                         class="skill-button">
-                </div>
-                <div id="skill-4" class="button-effect">
-                    <img id="skill-4-image" src="../img/skill/skill-5.webp" style="width: 100%"
-                         class="skill-button">
-                </div>
-                <div id="skill-5" class="button-effect">
-                    <img id="skill-5-image" src="../img/skill/skill-6.webp" style="width: 100%"
-                         class="skill-button">
-                </div>
-            </div>
+                </div>`
+                }
+            });
+
+
+                // `<div id="skill-2" class="button-effect">
+                //     <img id="skill-2-image" src="../img/skill/skill-3.webp" style="width: 100%"
+                //          class="skill-button">
+                // </div>
+                // <div id="skill-3" class="button-effect">
+                //     <img id="skill-3-image" src="../img/skill/skill-4.webp" style="width: 100%"
+                //          class="skill-button">
+                // </div>
+                // <div id="skill-4" class="button-effect">
+                //     <img id="skill-4-image" src="../img/skill/skill-5.webp" style="width: 100%"
+                //          class="skill-button">
+                // </div>
+                // <div id="skill-5" class="button-effect">
+                //     <img id="skill-5-image" src="../img/skill/skill-6.webp" style="width: 100%"
+                //          class="skill-button">
+                // </div>
+           context += `</div>
             <div id="skill-detail" class="character-detail-layout">
                 <div id="skill-detail-left">
                     <img id="skill-image" style="width: 100%" class="layout">
@@ -252,7 +266,7 @@ function removeKeyframe() {
 
 
 function displayPlayerStatus(characterIndex) {
-    if(alivePlayerDetailList.length > 0) {
+    if (alivePlayerDetailList.length > 0) {
         let divElementHp = document.getElementById(`char-${characterIndex + 1}-hp`);
         let divElementParent = document.getElementById(`char-${characterIndex + 1}-status`);
         let divElementMp = document.getElementById(`char-${characterIndex + 1}-mp`);
@@ -274,8 +288,8 @@ function displayPlayerStatus(characterIndex) {
     }
 }
 
-function displayAllPlayerStatus(aliveCharacterDetailList){
-    for (let i = 0; i < aliveCharacterDetailList.length ; i++) {
+function displayAllPlayerStatus(aliveCharacterDetailList) {
+    for (let i = 0; i < aliveCharacterDetailList.length; i++) {
         displayPlayerStatus(i);
     }
 }
@@ -294,19 +308,21 @@ function displayEnemyStatus(characterIndex) {
         divElementParent.replaceChild(enemyHeath, divElementHp);
     }
 }
-function displayAllEnemyStatus(aliveEnemyDetailList){
-    for (let i = 0; i < aliveEnemyDetailList.length ; i++) {
+
+function displayAllEnemyStatus(aliveEnemyDetailList) {
+    for (let i = 0; i < aliveEnemyDetailList.length; i++) {
         displayEnemyStatus(i);
     }
 }
-function removeEnemyStatus(){
-        let divElement = document.getElementById(`enemy-hp`);
-        let emptyDiv = document.createElement('div');
-        emptyDiv.className = divElement.className;
-        emptyDiv.id = divElement.id;
-        emptyDiv.style.cssText = divElement.style.cssText;
-        emptyDiv.style.cssFloat = divElement.style.cssFloat;
-        divElement.parentNode.replaceChild(emptyDiv, divElement);
+
+function removeEnemyStatus() {
+    let divElement = document.getElementById(`enemy-hp`);
+    let emptyDiv = document.createElement('div');
+    emptyDiv.className = divElement.className;
+    emptyDiv.id = divElement.id;
+    emptyDiv.style.cssText = divElement.style.cssText;
+    emptyDiv.style.cssFloat = divElement.style.cssFloat;
+    divElement.parentNode.replaceChild(emptyDiv, divElement);
 }
 
 

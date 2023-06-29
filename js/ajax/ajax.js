@@ -3,6 +3,7 @@ let inventoryList = [];
 let itemInInventoryList = [];
 let itemPool = [];
 let currentSelectCharacter;
+let currentCharacterIndex;
 
 let playerList = [];
 let playerDetailList = [];
@@ -280,22 +281,35 @@ function getAllInventory() {
 }
 
 // ------------------------------------------------
-function getSkillOfAliveCharacter() {
-    $.ajax({
-        type:"GET",
-        url:"http://localhost:8080/character-alive",
-        success(aliveCharacter){
-        }
+function getSkillByCharacterAndGameSession(gameSessionId,characterId) {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            type:"GET",
+            url:`http://localhost:8080/skill/game-session/${gameSessionId}/game-character/${characterId}`,
+            success(data) {
+                resolve(data);
+            },
+            error(jqXHR, textStatus, errorThrown) {
+                reject(errorThrown);
+            }
+        })
     })
 }
 
 function getSkillOfAliveEnemy() {
-    $.ajax({
-        type:"GET",
-        url:"http://localhost:8080/skill",
-        success(skillAlive){
-        }
-    })
+   return new Promise((resolve, reject) => {
+       $.ajax({
+           type: "GET",
+           url: "http://localhost:8080/skill",
+           success(data) {
+               resolve(data);
+           },
+           error(jqXHR, textStatus, errorThrown) {
+               reject(errorThrown);
+           }
+       })
+   });
+
 }
 
 function addItemToInventory(){
